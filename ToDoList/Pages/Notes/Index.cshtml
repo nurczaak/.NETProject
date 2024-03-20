@@ -1,0 +1,43 @@
+﻿@page
+@model ToDoList.Pages.Notes.IndexModel
+@using ToDoList.Models
+@using Microsoft.AspNetCore.Identity
+
+<h1>My Notes</h1>
+
+<div>
+    <a asp-page="Create" class="btn btn-primary">Create New Note</a>
+</div>
+
+<div class="row mt-4">
+    @foreach (var item in Model.Notes)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="@item.Image" class="card-img-top" alt="Note Image">
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Description</p>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" disabled="@item.IsDone" />
+                        <label class="form-check-label">
+                            @if (item.IsDone)
+                            {
+                                <s>Done</s>
+                            }
+                            else
+                            {
+                                <span>Not Done</span>
+                            }
+                        </label>
+                        <form method="post" asp-page="Delete" asp-route-id="@item.Id">
+                            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                        </form>
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-primary mt-2">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

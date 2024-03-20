@@ -1,0 +1,35 @@
+﻿@page
+@model ToDoList.Pages.Notes.CreateModel
+
+
+<h1>Create a New Note</h1>
+
+<div class="container mt-4">
+    <form method="post">
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title:</label>
+            <input type="text" id="Title" name="Title" class="form-control" asp-for="Note.Title" />
+            <span asp-validation-for="Note.Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Image" class="form-label">Image:</label>
+            <input type="text" id="Image" name="Image" class="form-control" asp-for="Note.Image" />
+            <span asp-validation-for="Note.Image" class="text-danger"></span>
+        </div>
+
+      
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description:</label>
+            <textarea id="Description" name="Description" class="form-control" asp-for="Note.Description"></textarea>
+            <span asp-validation-for="Note.Description" class="text-danger"></span>
+        </div>
+
+        <!-- Add these lines to display validation errors -->
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <!-- End of validation error display -->
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>

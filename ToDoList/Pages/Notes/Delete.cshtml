@@ -1,0 +1,13 @@
+﻿@page
+@model ToDoList.Pages.Notes.DeleteModel
+
+<h1>Delete Note</h1>
+
+<div>
+    <p>Are you sure you want to delete this note?</p>
+    <form method="post">
+        <input type="hidden" asp-for="Note.Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
